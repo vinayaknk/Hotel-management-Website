@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content%}
+
+    <div class="container">
+        <h1>Log In</h1>
+        <div class="h-25 d-inline-block" style="width: 400px; background-color: rgba(255,0,0,0.1)">
+        <form method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <input type="submit" class="btn btn-primary" value="Login">
+        </form>
+        </div>
+        <hr>
+        <h3>Please sign up before you login  <a class="nav-link" href="{% url 'accounts:signup' %}"> Sign Up </a> </h3>
+    </div>
+
+{% endblock%}

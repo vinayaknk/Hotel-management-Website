@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="col-md-6">
+		<h2 style="color:green	;">Meal Ordered By : {{user.username}} </h2>
+        <h5 style="color:red	;"><u>Order Details : </u></h5>
+	</div>
+
+	<div class="">
+        <ol>
+		{% for meals in roomservice_list %}
+            <li> <h6> Food Item : {{meals.meal}};
+				Delivery : {{meals.delivery_time}} <a href="{% url 'reservation:delete_meal' pk=meals.pk %}" class="btn btn-danger">Cancel</a> </h6></li>
+				booked On {{meals.booked_on}} by {{meals.name}}
+
+		{% empty %}
+				<h5>Order(s) not placed</h5>
+        {% endfor %}
+        </ol>
+	</div>
+
+
+{% endblock %}

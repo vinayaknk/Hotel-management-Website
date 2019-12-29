@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+
+
+<a href="{% url 'reservation:list' username=user.username %}" class="btn btn-primary">Reservation history</a>
+
+<hr>
+    <h2> {{user.username}}, please choose the dates to book rooms</h2>
+<hr>
+{% if user.is_authenticated %}
+
+<div class="h-25 d-inline-block" style="width: 400px; background-color: rgba(255,0,0,0.1)">
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Reserve" class="btn btn-primary btn-large">
+    </form>
+</div>
+{% endif %}
+    <hr>
+{% endblock %}

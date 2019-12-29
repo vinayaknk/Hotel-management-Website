@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+{% load tz %}
+
+    <h2>Reservation detail page</h2>
+    <hr>
+    <h4> Reserved From : {{reserve.check_in_date}} </h4>
+    <h4> Reserved Till : {{reserve.check_out_date}} </h4>
+    <h4> Reserved By : {{reserve.name}} </h4>
+    <h4> Reserved On : {{reserve.booked_on}} </h4>
+
+<hr>
+{% now "N j Y" as today %}
+{% if reserve.check_in_date|date:"N j Y" >= today %}
+    <a href="{% url 'reservation:update' pk=reserve.pk %}" class="btn btn-warning"> Modify </a>
+    <a href="{% url 'reservation:delete' pk=reserve.pk %}" class="btn btn-danger"> Cancel </a>
+    <hr>
+    <a href="{% url 'reservation:service' pk=reserve.pk %}" class="btn btn-primary">Room service</a>
+    <hr>
+{% endif %}
+
+{% endblock %}

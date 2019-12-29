@@ -1,0 +1,19 @@
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
+
+class UserSignUpForm(UserCreationForm):
+
+    class Meta:
+        fields = ('username','email','password1','password2')
+        model  = get_user_model()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args,**kwargs)
+        self.fields['username'].label = 'Dispaly Name'
+        self.fields['email'].label = 'Email Address'
+        self.fields['username'].widget.attrs['style'] = 'width:400px; height:40px;'
+        self.fields['email'].widget.attrs['style'] = 'width:400px; height:40px;'
+        self.fields['password1'].widget.attrs['style'] = 'width:400px; height:40px;'
+        self.fields['password2'].widget.attrs['style'] = 'width:400px; height:40px;'
+
+

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1> you are logged in! </h1>
+
+<ul>
+    <h2>Please <a href="{% url 'reservation:reserve'%}">click here </a>to Reserve Rooms or click on the reservation Tab</h2>
+    <h2>Please <a href="{% url 'reservation:list' username=user.username %}">click here </a> to check your reservation details</h2>
+
+
+</ul>
+
+{% endblock %}

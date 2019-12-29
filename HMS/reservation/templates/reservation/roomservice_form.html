@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="container bg-info">
+    <h2>Please fill the below details to order meals</h2>
+    <hr>
+
+<div class="h-25 d-inline-block" style="width: 400px; background-color: rgba(255,0,0,0.1)">
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        <input type="submit" value="Save" class="btn btn-primary btn-large">
+    </form>
+</div>
+    <hr>
+</div>
+    <h4>Please <a href="{% url 'reservation:meal_list' username=user.username %}">click </a>here check your meal order details</h4>
+{% endblock %}
